@@ -15,7 +15,7 @@ function App() {
     <Header/>
     <Routes>
         <Route path='/wallet' element={<Wallet/>}/>
-        <Route path='*' element={<Home/>}/>
+        {/* <Route path='*' element={<Home/>}/> */}
         <Route path='/unlock' element={<WalletUnlock/>}/>
 
 

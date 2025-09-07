@@ -15,8 +15,12 @@ import {
   Lock,
   ChevronUp
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Home= () => {
+
+    const navigate = useNavigate()
+
   const coreApps = [
     { name: 'fireside', icon: Flame, color: 'text-purple-600' },
     { name: 'Wallet', icon: Wallet, color: 'text-purple-600' },
@@ -56,7 +60,7 @@ const Home= () => {
             {coreApps.map((app, index) => {
               const Icon = app.icon;
               return (
-                <div key={index} className="flex flex-col items-center space-y-2">
+                <div key={index} className="flex flex-col items-center space-y-2" onClick={()=>{navigate('/unlock')}}>
                   <div className="w-16 h-16 bg-gray-50 rounded-2xl border border-gray-200 flex items-center justify-center hover:bg-purple-50 transition-colors duration-200">
                     <Icon className={`w-8 h-8 ${app.color}`} />
                   </div>
