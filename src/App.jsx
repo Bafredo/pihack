@@ -1,15 +1,22 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import './App.css'
+import Header from './components/Header'
+import Home from './pages/Home'
+import Wallet from './pages/Wallet'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className='w-full flex justify-center'>
-      Fred
-    </div>
+    <BrowserRouter>
+    <Header/>
+    <Routes>
+        <Route path='/wallet' element={<Wallet/>}/>
+        <Route path='*' element={<Home/>}/>
+    </Routes>
+    </BrowserRouter>
+    
   )
 }
 
