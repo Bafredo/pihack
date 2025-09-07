@@ -4,6 +4,7 @@ import './App.css'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Wallet from './pages/Wallet'
+import Footer from './components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,6 +15,8 @@ function App() {
     <Routes>
         <Route path='/wallet' element={<Wallet/>}/>
         <Route path='*' element={<Home/>}/>
+        <Route path='/footer' element={<Footer/>}/>
+
     </Routes>
     </BrowserRouter>
     
