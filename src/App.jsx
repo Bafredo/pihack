@@ -7,6 +7,7 @@ import Wallet from './pages/Wallet'
 import Footer from './components/Footer'
 import WalletUnlock from './pages/WalletUnlock'
 import LoadingGif from './pages/LoadingGif'
+import Dashboard from './pages/Dashboard'
 
 function Layout({ children }) {
   const location = useLocation();
@@ -32,6 +33,7 @@ function App() {
           <Route path='/unlock' element={<WalletUnlock />} />
           <Route path='/home' element={<Home />} />
           <Route path='/loading' element={<LoadingGif />} />
+          <Route path='/metaviewer' element ={<Dashboard/>}/>
           {/* Redirect all unknown paths to loading */}
           <Route path='*' element={<LoadingGif />} />
         </Routes>
