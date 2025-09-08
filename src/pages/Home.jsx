@@ -31,6 +31,9 @@ import lockups from './../assets/lockups.png'
 import develop from './../assets/develop.jpeg'
 
 
+import bottom from './../assets/bottom.jpeg'
+
+
 
 
 
@@ -91,17 +94,19 @@ const Home= () => {
 
         {/* Explore Third-Party Apps Section */}
         <div className="mb-6">
-          <h2 className="text-lg font-semibold text-gray-800 text-center mb-4">
+          {/* <h2 className="text-lg font-semibold text-gray-800 text-center mb-4">
             Explore Third-Party Apps
-          </h2>
+          </h2> */}
           
           {/* Third-party app preview */}
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg h-32 flex items-center justify-center">
+          {/* <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg h-32 flex items-center justify-center">
             <div className="text-white text-center">
               <div className="text-sm opacity-90 mb-1">Top Ranked App</div>
               <div className="font-semibold">Explore Apps</div>
             </div>
-          </div>
+          </div> */}
+
+          <img src={bottom}/>
         </div>
       </div>
     </div>
