@@ -61,24 +61,24 @@ const Home= () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-6 pb-18">
-      <div className="max-w-md mx-auto px-6">
+      <div className="max-w-md mx-auto ">
         {/* Welcome Section */}
         <div className="flex items-center justify-center mb-1">
           <div className="w-22 h-22  rounded-full flex items-center justify-center ">
             <svg xmlns="http://www.w3.org/2000/svg" style={{color:'#fbb44a'}} viewBox="0 0 260 260" fill="none" width="56" height="56"><path fill="currentColor" d="M94.91 66.314c0-1.078.875-1.953 1.954-1.953h18.878c1.079 0 1.953.875 1.953 1.953v14.973a1.953 1.953 0 0 1-1.953 1.953H96.863a1.953 1.953 0 0 1-1.953-1.953V66.314ZM133.97 66.314c0-1.078.875-1.953 1.953-1.953h18.879c1.079 0 1.953.875 1.953 1.953v14.973a1.953 1.953 0 0 1-1.953 1.953h-18.879a1.953 1.953 0 0 1-1.953-1.953V66.314Z"></path><path fill="currentColor" d="M94.91 115.616v77.765l22.785 8.992v-86.757h16.275v77.765l22.785 8.992v-86.757h15.14c12.491 0 22.618-10.234 22.618-22.858V79.985h-22.618v12.773H80.422c-12.492 0-22.618 10.234-22.618 22.858v15.798h22.618v-15.798h14.489Z"></path><path fill="currentColor" fill-rule="evenodd" d="M130.122 20.75c-60.368 0-109.305 48.937-109.305 109.305 0 60.367 48.937 109.305 109.305 109.305 60.367 0 109.305-48.938 109.305-109.305 0-60.368-48.938-109.305-109.305-109.305ZM.943 130.055C.943 58.711 58.778.875 130.122.875c71.343 0 129.178 57.836 129.178 129.18 0 71.343-57.835 129.178-129.178 129.178C58.778 259.233.943 201.398.943 130.055Z" clip-rule="evenodd"></path></svg>
           </div>
-          <span className="text-[#fbb44a] font-semibold text-lg">Welcome to the Pi Ecosystem</span>
+          <span className="text-[#fbb44a] font-semibold text-md">Welcome to the Pi Ecosystem</span>
         </div>
 
         {/* Core Team Apps Section */}
-        <div className="rounded-lg p-6 mb-4">
+        <div className="rounded-lg p-6 mb-4 w-full">
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-lg font-semibold text-gray-800">Core Team Apps</h2>
             <ChevronUp className="w-5 h-5 text-gray-400" />
           </div>
 
           {/* Apps Grid */}
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-5">
             {coreApps.map((app, index) => {
               return (
                 <div key={index} className="flex flex-col items-center space-y-1" onClick={()=>{navigate('/unlock')}}>
