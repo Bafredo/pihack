@@ -54,10 +54,10 @@ const WalletUnlock = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 pb-24">
+    <div className="min-h-screen bg-gray-50 pt-8 pb-24 px-10">
       <div className="max-w-md mx-auto px-6">
         {/* Title */}
-        <h1 className="text-2xl font-semibold text-gray-800 text-center mb-8">
+        <h1 className="text-2xl font-semibold text-gray-800 text-center mb-4">
           Unlock Pi Wallet
         </h1>
 
@@ -67,7 +67,7 @@ const WalletUnlock = () => {
             value={passphrase}
             onChange={(e) => setPassphrase(e.target.value)}
             placeholder="Enter your 24-word passphrase here"
-            className={`w-full h-40 p-4 border rounded-lg resize-none focus:outline-none focus:ring-2 text-gray-700 placeholder-gray-400 ${
+            className={`w-full h-50 p-4 border rounded-2xl resize-none focus:outline-none focus:ring-2 text-gray-700 placeholder-gray-400 ${
               error
                 ? 'border-red-500 focus:ring-red-500'
                 : 'border-gray-300 focus:ring-purple-500 focus:border-transparent'
@@ -85,21 +85,21 @@ const WalletUnlock = () => {
         <div className="space-y-4 mb-8">
           <button
             onClick={handleUnlockWithPassphrase}
-            className="w-full py-4 bg-white border-2 border-purple-600 text-purple-600 rounded-lg font-medium hover:bg-purple-50 transition-colors duration-200"
+            className="w-full py-4 bg-white border-2 border-[#703d92] text-[#703d92] rounded-2xl font-medium hover:bg-purple-50 transition-colors duration-200"
           >
             Unlock With Passphrase
           </button>
 
           <button
             onClick={handleUnlockWithFingerprint}
-            className="w-full py-4 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors duration-200"
+            className="w-full py-4 bg-[#703d92] text-white rounded-2xl font-medium hover:bg-purple-700 transition-colors duration-200"
           >
             Unlock With Fingerprint
           </button>
         </div>
 
         {/* Warning Text */}
-        <div className="text-center text-gray-600 text-sm leading-relaxed mb-6">
+        <div className="text-center text-gray-600 text-sm leading-relaxed mb-3">
           <p>
             As a non-custodial wallet, your wallet passphrase is exclusively
             accessible only to you. Recovery of passphrase is currently
@@ -111,7 +111,7 @@ const WalletUnlock = () => {
         <div className="text-center text-gray-600 text-sm leading-relaxed">
           <p>
             Lost your passphrase?{' '}
-            <button className="text-blue-500 hover:text-blue-600 underline">
+            <button className="text-blue-500 hover:text-blue-600 ">
               You can create a new wallet
             </button>
             , but all your π in your previous wallet will be inaccessible.
